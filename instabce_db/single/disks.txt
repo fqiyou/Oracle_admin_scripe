@@ -1,0 +1,15 @@
+fdisk -l
+fdisk /dev/sdb
+
+oracleasm configure -i
+	oracle oinstall y y done
+
+vi /etc/selinux/config
+disabled
+
+/etc/init.d/oracleasm createdisk DATA01 /dev/sdb1
+oracleasm deletedisk DISK01
+
+
+chown -R oracle:oinstall /stage
+chmod -R 775 /stage

@@ -1,0 +1,16 @@
+1. yum -y install vnc *vnc-server*
+
+2. vim /etc/sysconfig/vncservers
+	VNCSERVERS="1:root"
+	VNCSERVERARGS[1]="-geometry 1024x768"
+
+3. vncpasswd
+
+4. /etc/init.d/vncserver start
+
+5. vim /root/.vnc/xstartup
+	gnome &
+6. vim /etc/sysconfig/iptables
+	在“-A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT”
+	下面添加一行-A INPUT -m state --state NEW -m tcp -p tcp --dport 5901 -j ACCEPT
+	重启iptables服务#/etc/init.d/iptables restart
