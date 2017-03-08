@@ -1,23 +1,23 @@
 CREATE OR REPLACE PROCEDURE P_SMAIL IS
-  P_FROM     VARCHAR2(200) := 'fqiyou'; --·¢¼þÈËname
-  P_FROMA    VARCHAR2(200) := '1522105005@qq.com'; --·¢¼þÈËMail
-  P_TO       VARCHAR2(200) := 'lys'; --ÊÕ¼þÈËname
-  P_TOA      VARCHAR2(200) := 'yc@fqiyou.com'; --ÊÕ¼þÈËMail
-  P_CC       VARCHAR2(200) := 'yangchao'; --³­ËÍÈËname
-  P_CCA      VARCHAR2(200) := 'yc.fqiyou@gmail.com'; --³­ËÍÈËMail
-  P_SUBJ     VARCHAR2(200) := 'ORACLEÖÐ·¢ËÍÓÊ¼þ²âÊÔ'; --Ö÷Ìâ
-  P_MESS     VARCHAR2(200) := 'ORACLEÖÐ·¢ËÍÓÊ¼þ²âÊÔ£ºÊ±¼ä' ||
+  P_FROM     VARCHAR2(200) := 'fqiyou'; --å‘ä»¶äººname
+  P_FROMA    VARCHAR2(200) := '1522105005@qq.com'; --å‘ä»¶äººMail
+  P_TO       VARCHAR2(200) := 'lys'; --æ”¶ä»¶äººname
+  P_TOA      VARCHAR2(200) := 'yc@fqiyou.com'; --æ”¶ä»¶äººMail
+  P_CC       VARCHAR2(200) := 'yangchao'; --æŠ„é€äººname
+  P_CCA      VARCHAR2(200) := 'yc.fqiyou@gmail.com'; --æŠ„é€äººMail
+  P_SUBJ     VARCHAR2(200) := 'ORACLEä¸­å‘é€é‚®ä»¶æµ‹è¯•'; --ä¸»é¢˜
+  P_MESS     VARCHAR2(200) := 'ORACLEä¸­å‘é€é‚®ä»¶æµ‹è¯•ï¼šæ—¶é—´' ||
                               TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') ||
-                              '´ïµ½Ä¿µÄ£ºÔÚORACLE´æ´¢¹ý³ÌÖÐ·¢ËÍÓÊ¼þ'; --ÄÚÈÝ
-  P_USER     VARCHAR2(200) := '1522105005@qq.com'; --ÓÊÏäÕËºÅ
-  P_ASS      VARCHAR2(200) := 'edimoapxjmxahifj'; --ÓÊÏäÃÜÂë
-  P_MAILHOST VARCHAR2(200) := 'smtp.qq.com'; --ÓÊÏäsmtp
-  V_PORT     NUMBER := 25; --ÓÊÏäsmtp¶Ë¿Ú
+                              'è¾¾åˆ°ç›®çš„ï¼šåœ¨ORACLEå­˜å‚¨è¿‡ç¨‹ä¸­å‘é€é‚®ä»¶'; --å†…å®¹
+  P_USER     VARCHAR2(200) := '1522105005@qq.com'; --é‚®ç®±è´¦å·
+  P_ASS      VARCHAR2(200) := '###########'; --é‚®ç®±å¯†ç 
+  P_MAILHOST VARCHAR2(200) := 'smtp.qq.com'; --é‚®ç®±smtp
+  V_PORT     NUMBER := 25; --é‚®ç®±smtpç«¯å£
   V_CONN     UTL_SMTP.CONNECTION;
   V_MSG      VARCHAR2(4000);
 
 BEGIN
-  --ÓÊ¼þÄÚÈÝ ×¢Òâ±¨Í·ÐÅÏ¢ºÍÓÊ¼þÕýÎÄÖ®¼äÒª¿ÕÒ»ÐÐ
+  --é‚®ä»¶å†…å®¹ æ³¨æ„æŠ¥å¤´ä¿¡æ¯å’Œé‚®ä»¶æ­£æ–‡ä¹‹é—´è¦ç©ºä¸€è¡Œ
   V_MSG := 'Date:' || TO_CHAR(SYSDATE, 'yyyymmdd hh24:mi:ss') ||
            UTL_TCP.CRLF || 'From: ' || P_FROM || '<' || P_FROMA || '>' ||
            UTL_TCP.CRLF || 'To: ' || P_TO || '<' || P_TOA || '>' ||
@@ -35,7 +35,7 @@ BEGIN
   UTL_SMTP.MAIL(V_CONN, '<' || P_FROMA || '>');
 
   IF P_CCA IS NOT NULL THEN
-    UTL_SMTP.RCPT(V_CONN, P_CCA); --Ö÷ÓÊ¼þ
+    UTL_SMTP.RCPT(V_CONN, P_CCA); --ä¸»é‚®ä»¶
   END IF;
 
   UTL_SMTP.OPEN_DATA(V_CONN);
