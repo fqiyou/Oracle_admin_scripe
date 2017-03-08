@@ -1,7 +1,7 @@
 CREATE OR REPLACE PROCEDURE P_SMAIL IS
   P_FROM     VARCHAR2(200) := 'fqiyou'; --发件人name
   P_FROMA    VARCHAR2(200) := '1522105005@qq.com'; --发件人Mail
-  P_TO       VARCHAR2(200) := 'lys'; --收件人name
+  P_TO       VARCHAR2(200) := 'yc'; --收件人name
   P_TOA      VARCHAR2(200) := 'yc@fqiyou.com'; --收件人Mail
   P_CC       VARCHAR2(200) := 'yangchao'; --抄送人name
   P_CCA      VARCHAR2(200) := 'yc.fqiyou@gmail.com'; --抄送人Mail
