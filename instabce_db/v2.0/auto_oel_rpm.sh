@@ -7,12 +7,12 @@
 #   Describe:
 #######################################################
 
-CD_DIR=/dev/sro # df -lh 查看
+CD_DIR=/dev/sr0 # df -lh 查看
 
 # 1.0 加载DVD光盘, 挂载
 # 非光驱
 # mount -t iso9660 -o loop /tmp/image.iso /mnt/oel6/
-mkdir -p $MOUNT_DIR
+mkdir -p /mnt/oel6 
 mount $CD_DIR /mnt/oel6 
 grep "mount $CD_DIR /mnt/oel6" /etc/rc.local >/dev/null
 if [ $? -ne 0 ];then
