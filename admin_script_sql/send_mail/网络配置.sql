@@ -30,7 +30,7 @@ END;
 -- 3.0 ACL第三步，添加主机或域名
 BEGIN
   dbms_network_acl_admin.assign_acl(acl        => 'httprequestpermission.xml',
-                                    host       => 'smtp.qq.com', --smtp服务器地址
+                                    host       => 'smtp.sina.com', --smtp服务器地址
                                     lower_port => 25, --smtp端口
                                     upper_port => NULL);
 END;
