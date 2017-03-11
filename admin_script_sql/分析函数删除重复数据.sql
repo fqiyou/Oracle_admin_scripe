@@ -1,6 +1,6 @@
-/*
-ÓÃOracleµÄ·ÖÎöº¯ÊýÉ¾³ýÖØ¸´Êý¾Ý
-¼ÙÉè:´´½¨temp1.employeesÊý¾ÝÊ±³öÏÖÁË´íÎóÆäÖÐ²¿·ÖÐÐ±»ÊäÈëÁËÁ½±é¡£
+ï»¿/*
+ç”¨Oracleçš„åˆ†æžå‡½æ•°åˆ é™¤é‡å¤æ•°æ®
+å‡è®¾:åˆ›å»ºtemp1.employeesæ•°æ®æ—¶å‡ºçŽ°äº†é”™è¯¯å…¶ä¸­éƒ¨åˆ†è¡Œè¢«è¾“å…¥äº†ä¸¤éã€‚
 */
 
 

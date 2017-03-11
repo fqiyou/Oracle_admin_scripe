@@ -1,10 +1,10 @@
-PL/SQL Developer Test script 3.0
+锘縋L/SQL Developer Test script 3.0
 34
 -- Created on 2017/3/11 by YANGCHAO 
 declare
   p_count number;
 begin
-  dbms_output.put_line('------------loop方式----------------');
+  dbms_output.put_line('------------loop鏂瑰紡----------------');
   p_count := 3;
   loop
     dbms_output.put_line(p_count);
@@ -12,12 +12,12 @@ begin
     EXIT WHEN p_count < 1;
   end loop;
 
-  dbms_output.put_line('------------for循环----------------');
+  dbms_output.put_line('------------for寰幆----------------');
   for p_i in 1 .. 3 loop
     dbms_output.put_line(p_i);
   end loop;
 
-  dbms_output.put_line('------------while循环----------------');
+  dbms_output.put_line('------------while寰幆----------------');
   p_count := 3;
   while p_count > 0 loop
     dbms_output.put_line(p_count);
