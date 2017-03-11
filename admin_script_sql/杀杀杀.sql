@@ -1,4 +1,4 @@
-﻿--查看账务和计费库是否有锁
+﻿--查看是否有锁
 SELECT A.SID,a.* FROM V$LOCK A WHERE A.BLOCK > 0 AND a.TYPE IN ('TX','DX');
 
 select a.SQL_HASH_VALUE,a.* from gv$session a where a.SID='7197';

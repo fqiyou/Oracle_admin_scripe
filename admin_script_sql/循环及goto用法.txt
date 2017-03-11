@@ -1,5 +1,4 @@
-﻿PL/SQL Developer Test script 3.0
-34
+﻿
 -- Created on 2017/3/11 by YANGCHAO 
 declare
   p_count number;

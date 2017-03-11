@@ -1,5 +1,4 @@
-﻿PL/SQL Developer Test script 3.0
-20
+﻿
 -- Created on 2017/3/11 by YANGCHAO 
 declare 
   type varray_type1 is varray(3) of varchar2(10);
