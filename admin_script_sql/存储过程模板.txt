@@ -1,0 +1,14 @@
+CREATE OR REPLACE PROCEDURE P_Template(v_resultcode OUT NUMBER,
+                                       v_resultinfo OUT VARCHAR2)
+
+ is
+
+begin
+  v_resultcode := 1;
+  v_resultinfo := 'ok!';
+exception
+  WHEN OTHERS THEN
+    ROLLBACK;
+    v_resultcode := -1;
+    v_resultinfo := SUBSTR('err_end:' || SQLERRM, 1, 2000);
+end;

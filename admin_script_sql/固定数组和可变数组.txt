@@ -1,0 +1,24 @@
+PL/SQL Developer Test script 3.0
+20
+-- Created on 2017/3/11 by YANGCHAO 
+declare 
+  type varray_type1 is varray(3) of varchar2(10);
+  type varray_type2 is table of varchar2(10) index by binary_integer;
+  varrar_char1 varray_type1;
+  varrar_char2 varray_type2;
+begin
+  dbms_output.put_line('------------固定数组----------------');
+  varrar_char1 :=varray_type1('tom','jak','');
+  varrar_char1(3) := 'fac';
+  dbms_output.put_line(varrar_char1(1));
+  dbms_output.put_line(varrar_char1(3));
+  dbms_output.put_line('------------可变数组----------------');
+  varrar_char2(1) := 'fac1';
+  varrar_char2(2) := 'fac2';
+  varrar_char2(3) := 'fac3';
+  for p_i in 1 .. varrar_char2.COUNT loop
+    dbms_output.put_line(varrar_char2(p_i));
+  end loop;
+end;
+0
+0

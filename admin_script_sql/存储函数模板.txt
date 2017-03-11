@@ -1,0 +1,7 @@
+CREATE OR REPLACE FUNCTION F__Template(f_number_1 IN NUMBER,
+                                       f_number_2 IN NUMBER)
+  RETURN NUMBER IS
+Begin
+  RETURN f_number_1 + f_number_2;
+END;
+/
