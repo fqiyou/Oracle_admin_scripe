@@ -1,4 +1,4 @@
-ï»¿--æŸ¥çœ‹æ˜¯å¦æœ‰é”
+--²é¿´ÊÇ·ñÓĞËø
 SELECT A.SID,a.* FROM V$LOCK A WHERE A.BLOCK > 0 AND a.TYPE IN ('TX','DX');
 
 select a.SQL_HASH_VALUE,a.* from gv$session a where a.SID='7197';
@@ -16,32 +16,46 @@ select t.*
  and t.event like '%%'
  ;
 
---æ£€æŸ¥æ•ˆç‡æ‰§è¡Œæ•ˆç‡ä½ä¸‹çš„SQL
+--¼ì²éĞ§ÂÊÖ´ĞĞĞ§ÂÊµÍÏÂµÄSQL
 SELECT a.sql_id,a.SQL_HASH_VALUE,COUNT(1) FROM v$session a WHERE a.status = 'ACTIVE'
 AND a.SQL_HASH_VALUE <> '0' GROUP BY a.sql_id,a.SQL_HASH_VALUE ORDER BY 2 DESC;
 
 
---ç”Ÿæˆkill sessionè¯­å¥
+--Éú³Ékill sessionÓï¾ä
 SELECT 'alter system kill session ''' || A.SID || ',' || A.SERIAL# || ''';',
        A.LOGON_TIME,a.PROGRAM,a.EVENT
   FROM V$SESSION A
  WHERE a.SQL_HASH_VALUE in ('3972025795')
  ORDER BY A.LOGON_TIME;
---æ ¹æ®hashvalueæ‰¾åˆ°å¯¹åº”çš„sqlè¯­å¥
+--¸ù¾İhashvalueÕÒµ½¶ÔÓ¦µÄsqlÓï¾ä
 --2003290022
 SELECT * FROM v$sqltext a WHERE a.HASH_VALUE = '3972025795'
 ORDER BY a.PIECE;
 select * from v$sql_plan a where a.SQL_ID='44pp063qc0mf3';
 select * from dba_hist_sql_plan a where a.sql_id='44pp063qc0mf3';
---æ£€æŸ¥å“ªäº›å¯¹è±¡è¢«é”
+--¼ì²éÄÄĞ©¶ÔÏó±»Ëø
 SELECT b.OBJECT_NAME,c.MACHINE,c.SID,c.SERIAL# 
 FROM v$locked_object a,dba_objects b,v$session c
 WHERE a.object_id = b.object_id
 AND a.session_id = c.sid ;
---æ ¹æ®sidæ‰¾åˆ°æ•°æ®åº“ä¸»æœºä¸Šå¯¹åº”çš„è¿›ç¨‹å·spid
+--¸ù¾İsidÕÒµ½Êı¾İ¿âÖ÷»úÉÏ¶ÔÓ¦µÄ½ø³ÌºÅspid
 SELECT b.SPID,a.OSUSER,a.PROGRAM FROM v$session a,v$process b
 WHERE a.PADDR = b.ADDR AND a.SID = '4284';
---æŸ¥çœ‹SQLæ‰§è¡Œ
+--²é¿´SQLÖ´ĞĞ
 select * from v$session_longops a where a.SOFAR<>a.TOTALWORK
 
-
+-- Ö÷»ú
+select s.USERNAME,
+        'alter system kill session '||''''||S.sid|| ','||S.serial#||'''' || ';',
+       'kill -9  ' || p.SPID,
+       s.STATUS,
+       s.SQL_ID,
+       s.STATE,
+       s.EVENT,
+       s.MACHINE,
+       sq.SQL_TEXT
+  from v$session s, v$sqlarea sq, v$process p
+ where s.PADDR = p.ADDR
+   and s.SQL_ID = sq.SQL_ID(+)
+   AND S.STATUS='ACTIVE'
+   and s.EVENT like '%SQL*Net message from client%'
